@@ -1,21 +1,14 @@
 // import lib to help create a component
 import React from 'react';
-import {AppRegistry, Text} from 'react-native';
+import {AppRegistry} from 'react-native';
+import Header from './src/components/header';
 
 // create a component
-// don't need braces and return if return is only thing
-/*
 const App = () => {
 	return (
-		<Text>i like soup. soup is good food.</Text>
+			<Header/>
 	);
 };
-*/
-
-const App = () => (
-	<Text>i like soup. soup is good food.</Text>
-);
-
 
 // render it
 AppRegistry.registerComponent('albums', () => App);
