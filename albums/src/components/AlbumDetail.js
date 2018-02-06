@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
+import Card from './Card';
 
 const AlbumDetail = (props) => {
-	//const {textStyle, viewStyle} = styles;
-
 	return (
-		<View>
+		<Card>
 			<Text>{props.album.title}</Text>
-		</View>
-		/*
-		<View style={viewStyle}>
-			<Text style={textStyle}>{props.title}</Text>
-		</View>
-		*/
+		</Card>
 	);
 };
 
