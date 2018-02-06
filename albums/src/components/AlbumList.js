@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
-const AlbumList = (props) => {
-	const {textStyle, viewStyle} = styles;
+class AlbumList extends Component {
 
-	return (
-		<View style={viewStyle}>
-			<Text style={textStyle}>album list</Text>
-		</View>
-	);
-};
+	render() {
+		const {textStyle, viewStyle} = styles;
+
+		return (
+			<View style={viewStyle}>
+				<Text style={textStyle}>album list</Text>
+			</View>
+		);
+	}
+}
 
 const styles = {
 	textStyle: {
