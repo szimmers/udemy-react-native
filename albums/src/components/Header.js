@@ -11,7 +11,7 @@ const Header = (props) => {
 	);
 };
 
-// justifyContent: align vertically
+// justifyContent: align vertically (because flexDirection defaults to column)
 // alignItems: align horizontally
 const styles = {
 	textStyle: {
