@@ -42,14 +42,14 @@ class LoginForm extends Component {
 
 	renderButton() {
 		if (this.state.busy) {
-			return <Spinner size="small"/>
+			return <Spinner size="small"/>;
 		}
 
 		return (
 			<Button onPress={this.onLoginAttempt.bind(this)}>
 				Log In
 			</Button>
-		)
+		);
 	}
 
 	render() {
