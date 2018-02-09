@@ -12,8 +12,13 @@ class LoginForm extends Component {
 
 	onLoginAttempt() {
 		const {email, password} = this.state;
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(() => {
-			firebase.auth().createUserWithEmailAndPassword(email, password).catch(() => {
+
+		this.setState({error: ''});
+
+		firebase.auth().signInWithEmailAndPassword(email, password).catch((e) => {
+			console.log('(1)', e);
+			firebase.auth().createUserWithEmailAndPassword(email, password).catch((e) => {
+				console.log('(2)', e);
 				this.setState({error: 'Authentication failed'});
 			});
 		});
@@ -42,7 +47,7 @@ class LoginForm extends Component {
 					/>
 				</CardSection>
 
-				<Text styles={errorTextStyle}>
+				<Text style={errorTextStyle}>
 					{this.state.error}
 				</Text>
 
