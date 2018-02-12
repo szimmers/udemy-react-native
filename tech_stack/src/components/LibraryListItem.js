@@ -7,9 +7,11 @@ import * as actions from '../actions';
 class LibraryListItem extends Component {
 	renderDescription(expanded, description) {
 		if (expanded) {
+			const {descriptionStyles} = styles;
+
 			return (
 				<CardSection>
-					<Text>
+					<Text style={descriptionStyles}>
 						{description}
 					</Text>
 				</CardSection>
@@ -18,7 +20,7 @@ class LibraryListItem extends Component {
 	}
 
 	render() {
-		const {titleStyle} = styles;
+		const {titleStyles} = styles;
 		const {id, title, description} = this.props.library;
 
 		return (
@@ -27,7 +29,7 @@ class LibraryListItem extends Component {
 			>
 				<View>
 					<CardSection>
-						<Text style={titleStyle}>
+						<Text style={titleStyles}>
 							{title}
 						</Text>
 					</CardSection>
@@ -39,9 +41,14 @@ class LibraryListItem extends Component {
 }
 
 const styles = {
-	titleStyle: {
+	titleStyles: {
 		fontSize: 18,
 		paddingLeft: 15
+	},
+	descriptionStyles: {
+		flex: 1,
+		paddingLeft: 20,
+		paddingRight: 20
 	}
 };
 
