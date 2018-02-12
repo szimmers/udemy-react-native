@@ -13,19 +13,14 @@ class LibraryList extends Component {
 	}
 
 	renderRow(library) {
-		return (
-			<LibraryListItem library={library} />
-		);
+		return <LibraryListItem library={library}/>;
 	}
 
 	render() {
-		return (
-			<ListView
-				dataSource={this.dataSource}
-				renderRow={this.renderRow}
-			>
-			</ListView>
-		);
+		return <ListView
+			dataSource={this.dataSource}
+			renderRow={this.renderRow}
+		/>;
 	}
 }
 
