@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
+import {connect} from 'react-redux';
 import {CardSection} from './common';
+import * as actions from '../actions';
 
 class LibraryListItem extends Component {
 	render() {
@@ -23,4 +25,8 @@ const styles = {
 	}
 };
 
-export default LibraryListItem;
+const mapStateToProps = state => {
+	return {selectedLibraryId: state.selectedLibraryId};
+};
+
+export default connect(mapStateToProps, actions)(LibraryListItem);
