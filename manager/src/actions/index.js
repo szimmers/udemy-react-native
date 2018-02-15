@@ -22,7 +22,7 @@ const userLoginSuccess = (dispatch, user) => {
 		payload: user
 	});
 
-	Actions.employeeList();
+	Actions.main();
 };
 
 const userLoginFail = (dispatch) => {
