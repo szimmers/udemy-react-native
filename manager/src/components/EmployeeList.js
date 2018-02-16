@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 	//const {} = state.employees;
 
 	return {
-		employees: state.employees;
+		employees: state.employees
 	}
 };
 
