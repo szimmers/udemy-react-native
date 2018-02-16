@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import {Text, Picker} from 'react-native';
 import {connect} from 'react-redux';
-import {employeeUpdate} from '../actions';
+import {employeeUpdate, employeeCreate} from '../actions';
 import {Button, Card, CardSection, LabeledTextInput} from './common';
 
 class EmployeeDetail extends Component {
+	componentWillMount() {
+		// default to monday so we get a value if user doesn't touch picker
+		this.props.employeeUpdate({prop: 'shift', value: 'M'});
+	}
+
+	onSave() {
+		const {name, phone, shift} = this.props;
+		this.props.employeeCreate({name, phone, shift});
+	}
+
 	render() {
 		return (
 			<Card>
@@ -43,8 +53,8 @@ class EmployeeDetail extends Component {
 				</CardSection>
 
 				<CardSection>
-					<Button>
-						Create
+					<Button onPress={this.onSave.bind(this)}>
+						Save
 					</Button>
 				</CardSection>
 			</Card>
@@ -72,4 +82,4 @@ const mapStateToProps = (state) => {
 	}
 };
 
-export default connect(mapStateToProps, {employeeUpdate})(EmployeeDetail);
+export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeDetail);

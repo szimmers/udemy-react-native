@@ -19,4 +19,14 @@ export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
  */
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 
+/**
+ * handles keystroke updates of user typing in fields
+ * @type {string}
+ */
 export const EMPLOYEE_UPDATE = 'EMPLOYEE_UPDATE';
+
+/**
+ * handles save of employee form
+ * @type {string}
+ */
+export const EMPLOYEE_CREATE = 'EMPLOYEE_CREATE';
