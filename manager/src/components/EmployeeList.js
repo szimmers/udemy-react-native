@@ -1,30 +1,51 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 import {connect} from 'react-redux';
-import {View, Text} from 'react-native';
+import {ListView, Text} from 'react-native';
 import {employeesFetch} from '../actions/EmployeeActions'
 
 class EmployeeList extends Component {
 	componentWillMount() {
 		this.props.employeesFetch();
+		this.createDataSource(this.props);
+	}
+
+	/**
+	 *
+	 * @param nextProps the props the component just received. this.props is still
+	 * the old props.
+	 */
+	componentWillReceiveProps(nextProps) {
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource({employees}) {
+		const ds = new ListView.DataSource({
+			rowHasChanged: (r1, r2) => r1 !== r2
+		});
+
+		this.dataSource = ds.cloneWithRows(employees);
+	}
+
+	renderRow(employee) {
+		return <Text>{employee.name}</Text>;
 	}
 
 	render() {
-		return (
-			<View>
-				<Text>tim</Text>
-				<Text>bob</Text>
-				<Text>larry</Text>
-				<Text>doug</Text>
-			</View>
-		);
+		return <ListView
+			dataSource={this.dataSource}
+			renderRow={this.renderRow}
+		/>;
 	}
 }
 
 const mapStateToProps = (state) => {
-	//const {} = state.employees;
+	const employees = _.map(state.employees, (val, uid) => {
+		return {...val, uid};
+	});
 
 	return {
-		employees: state.employees
+		employees
 	}
 };
 
