@@ -30,3 +30,9 @@ export const EMPLOYEE_UPDATE = 'EMPLOYEE_UPDATE';
  * @type {string}
  */
 export const EMPLOYEE_CREATE = 'EMPLOYEE_CREATE';
+
+/**
+ * indicates employees data has been returned from server
+ * @type {string}
+ */
+export const EMPLOYEES_FETCH_SUCCESS = 'EMPLOYEES_FETCH_SUCCESS';
