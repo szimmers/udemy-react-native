@@ -3,13 +3,15 @@ import _ from 'lodash';
 import Communications from 'react-native-communications';
 import {connect} from 'react-redux';
 import {employeeSave, employeeUpdate} from '../actions';
-import {Button, Card, CardSection} from './common';
+import {ConfirmModal, Button, Card, CardSection} from './common';
 import EmployeeForm from './EmployeeForm';
 
 /**
  * allows employee to be edited, plus other actions
  */
 class EmployeeEdit extends Component {
+	state = {showModal: false};
+
 	componentWillMount() {
 		_.each(this.props.employee, (value, prop) => {
 			this.props.employeeUpdate({prop, value});
@@ -44,6 +46,17 @@ class EmployeeEdit extends Component {
 						Text Schedule
 					</Button>
 				</CardSection>
+
+				<CardSection>
+					<Button onPress={() => this.setState({showModal: !this.state.showModal})}>
+						Fire Employee
+					</Button>
+				</CardSection>
+
+				<ConfirmModal visible={this.state.showModal}>
+					Are you sure you want to fire this employee?
+					They will be permanently deleted.
+				</ConfirmModal>
 			</Card>
 		);
 	}
