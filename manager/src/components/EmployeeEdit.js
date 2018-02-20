@@ -4,7 +4,7 @@ import {employeeCreate, employeeUpdate} from '../actions';
 import {Button, Card, CardSection} from './common';
 import EmployeeForm from './EmployeeForm';
 
-class EmployeeCreate extends Component {
+class EmployeeEdit extends Component {
 	componentWillMount() {
 		// default to monday so we get a value if user doesn't touch picker
 		this.props.employeeUpdate({prop: 'shift', value: 'M'});
@@ -22,7 +22,7 @@ class EmployeeCreate extends Component {
 
 				<CardSection>
 					<Button onPress={this.onSave.bind(this)}>
-						Create
+						Save
 					</Button>
 				</CardSection>
 			</Card>
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
 	return {name, phone, shift};
 };
 
-export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeCreate);
+export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeEdit);
