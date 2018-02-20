@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 import {connect} from 'react-redux';
-import {employeeCreate, employeeUpdate} from '../actions';
+import {employeeSave, employeeUpdate} from '../actions';
 import {Button, Card, CardSection} from './common';
 import EmployeeForm from './EmployeeForm';
 
+/**
+ * allows employee to be edited, plus other actions
+ */
 class EmployeeEdit extends Component {
 	componentWillMount() {
-		// default to monday so we get a value if user doesn't touch picker
-		this.props.employeeUpdate({prop: 'shift', value: 'M'});
+		_.each(this.props.employee, (value, prop) => {
+			this.props.employeeUpdate({prop, value});
+		});
 	}
 
 	onSave() {
 		const {name, phone, shift} = this.props;
-		this.props.employeeCreate({name, phone, shift});
+		const {uid} = this.props.employee;
+		this.props.employeeSave({name, phone, shift, uid});
 	}
 
 	render() {
@@ -36,4 +42,4 @@ const mapStateToProps = (state) => {
 	return {name, phone, shift};
 };
 
-export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeEdit);
+export default connect(mapStateToProps, {employeeUpdate, employeeSave})(EmployeeEdit);
