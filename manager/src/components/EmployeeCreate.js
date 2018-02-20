@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {employeeUpdate, employeeCreate} from '../actions';
 import {Button, Card, CardSection, LabeledTextInput} from './common';
 
-class EmployeeDetail extends Component {
+class EmployeeCreate extends Component {
 	componentWillMount() {
 		// default to monday so we get a value if user doesn't touch picker
 		this.props.employeeUpdate({prop: 'shift', value: 'M'});
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
 	}
 };
 
-export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeDetail);
+export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeCreate);
