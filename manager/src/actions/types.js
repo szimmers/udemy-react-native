@@ -36,3 +36,9 @@ export const EMPLOYEE_CREATE = 'EMPLOYEE_CREATE';
  * @type {string}
  */
 export const EMPLOYEES_FETCH_SUCCESS = 'EMPLOYEES_FETCH_SUCCESS';
+
+/**
+ * indicates edited employee was successfully saved
+ * @type {string}
+ */
+export const EMPLOYEE_SAVE_SUCCESS = 'EMPLOYEE_SAVE_SUCCESS';
