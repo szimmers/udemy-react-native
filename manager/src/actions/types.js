@@ -42,3 +42,9 @@ export const EMPLOYEES_FETCH_SUCCESS = 'EMPLOYEES_FETCH_SUCCESS';
  * @type {string}
  */
 export const EMPLOYEE_SAVE_SUCCESS = 'EMPLOYEE_SAVE_SUCCESS';
+
+/**
+ * indicates employee was successfully deleted
+ * @type {string}
+ */
+export const EMPLOYEE_DELETE_SUCCESS = 'EMPLOYEE_DELETE_SUCCESS';

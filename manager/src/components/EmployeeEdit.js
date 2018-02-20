@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import Communications from 'react-native-communications';
 import {connect} from 'react-redux';
-import {employeeSave, employeeUpdate} from '../actions';
+import {employeeSave, employeeUpdate, employeeDelete} from '../actions';
 import {ConfirmModal, Button, Card, CardSection} from './common';
 import EmployeeForm from './EmployeeForm';
 
@@ -30,6 +30,16 @@ class EmployeeEdit extends Component {
 		Communications.text(phone, msg);
 	}
 
+	deleteEmployee() {
+		const {uid} = this.props.employee;
+		this.setState({showModal: false});
+		this.props.employeeDelete({uid});
+	}
+
+	dontDeleteEmployee() {
+		this.setState({showModal: false});
+	}
+
 	render() {
 		return (
 			<Card>
@@ -53,7 +63,11 @@ class EmployeeEdit extends Component {
 					</Button>
 				</CardSection>
 
-				<ConfirmModal visible={this.state.showModal}>
+				<ConfirmModal
+					visible={this.state.showModal}
+					onAccept={this.deleteEmployee.bind(this)}
+					onReject={this.dontDeleteEmployee.bind(this)}
+				>
 					Are you sure you want to fire this employee?
 					They will be permanently deleted.
 				</ConfirmModal>
@@ -68,4 +82,4 @@ const mapStateToProps = (state) => {
 	return {name, phone, shift};
 };
 
-export default connect(mapStateToProps, {employeeUpdate, employeeSave})(EmployeeEdit);
+export default connect(mapStateToProps, {employeeUpdate, employeeSave, employeeDelete})(EmployeeEdit);
